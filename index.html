@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f1e9">
+  <meta name="description" content="蒙璐的动态个人简历">
+  <title>蒙璐｜动态个人简历</title>
+  <script>if (new URLSearchParams(location.search).get('skipIntro') === '1') document.documentElement.classList.add('skip-intro');</script>
+  <link rel="preload" as="image" href="assets/cover.png">
+  <link rel="stylesheet" href="styles.css?v=7">
+</head>
+<body>
+  <main class="page" aria-label="蒙璐个人简历">
+    <section class="stage" aria-label="个人简历主画面">
+      <img class="scene" id="scene" src="assets/cover.png" alt="蒙璐的个人简历主画面">
+
+      <div class="desktop-hotspots" aria-label="简历栏目">
+        <button class="hotspot hotspot-projects" data-panel="projects" data-scene="assets/projects.png" aria-label="查看项目经历"></button>
+        <button class="hotspot hotspot-growth" data-panel="growth" data-scene="assets/growth.png" aria-label="查看成长经历"></button>
+        <button class="hotspot hotspot-achievements" data-panel="achievements" data-scene="assets/achievements.png" aria-label="查看个人成就"></button>
+        <button class="hotspot hotspot-future" data-panel="future" data-scene="assets/future.png" aria-label="查看未来规划"></button>
+      </div>
+
+      <nav class="mobile-nav" aria-label="手机端栏目入口">
+        <button class="mobile-ticket" data-panel="projects"><span>01</span>项目经历</button>
+        <button class="mobile-ticket" data-panel="growth"><span>02</span>成长经历</button>
+        <button class="mobile-ticket" data-panel="achievements"><span>03</span>个人成就</button>
+        <button class="mobile-ticket" data-panel="future"><span>04</span>未来规划</button>
+      </nav>
+
+      <div class="site-actions" aria-label="播放与分享控制">
+        <button type="button" id="replay">重新播放</button>
+        <button type="button" id="share">分享链接</button>
+        <span class="share-status" id="shareStatus" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="intro" id="intro" aria-label="开场动画">
+        <video id="introVideo" muted playsinline preload="auto" poster="assets/cover.png" aria-label="人物打招呼动画">
+          <source src="assets/intro.mp4" type="video/mp4">
+        </video>
+        <button type="button" class="skip" id="skip">跳过开场</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="modal" id="resumeModal" aria-labelledby="modalTitle">
+    <div class="modal-shell">
+      <button class="modal-close" type="button" aria-label="关闭详情">关闭</button>
+      <div id="modalContent"></div>
+    </div>
+  </dialog>
+
+  <template id="projects-panel">
+    <header class="modal-head"><span>01</span><div><p>PROJECTS</p><h2 id="modalTitle">项目经历</h2></div></header>
+    <div class="project-list">
+      <a class="project-card" href="project-view.html?project=honglu"><small>01 / 在线项目</small><strong>红炉有伴萌宠预约平台</strong><span>打开项目 ↗</span></a>
+      <a class="project-card" href="project-view.html?project=shiguang"><small>02 / 在线项目</small><strong>拾光档案网站</strong><span>打开项目 ↗</span></a>
+    </div>
+  </template>
+
+  <template id="growth-panel">
+    <header class="modal-head"><span>02</span><div><p>EXPERIENCE</p><h2 id="modalTitle">成长经历</h2></div></header>
+    <section class="experience-item">
+      <p class="eyebrow">重庆工商大学大学生自主委员会</p>
+      <h3>文宣部干事</h3>
+      <p>负责推文与海报制作，并参与多次学校大型文艺活动的策划和组织；在内容表达、视觉呈现与现场协作中持续积累实践经验。</p>
+      <div class="photo-grid photo-grid-three experience-gallery" aria-label="大学生自主委员会活动照片">
+        <a href="assets/committee-team.jpg" target="_blank" rel="noopener" aria-label="查看大学生自主委员会部门活动合影原图"><img src="assets/committee-team.jpg" alt="大学生自主委员会部门活动合影" loading="lazy"></a>
+        <a href="assets/committee-awards.jpg" target="_blank" rel="noopener" aria-label="查看大学生自我管理与服务委员会表彰大会合影原图"><img src="assets/committee-awards.jpg" alt="大学生自我管理与服务委员会二〇二四至二〇二五学年表彰大会合影" loading="lazy"></a>
+        <a href="assets/committee-gala.jpg" target="_blank" rel="noopener" aria-label="查看第十六届大自委青春晚会合影原图"><img src="assets/committee-gala.jpg" alt="第十六届大自委青春晚会合影" loading="lazy"></a>
+      </div>
+    </section>
+    <section class="experience-item">
+      <p class="eyebrow">重庆工商大学青队</p>
+      <h3>网络部干事</h3>
+      <p>参与多次志愿服务，并组织、参与 Web 网站、PPT 制作及 PS、PR 工具学习；在团队协作中将学习成果转化为清晰、可落地的内容表达。</p>
+      <div class="photo-grid photo-grid-two experience-gallery" aria-label="青队活动照片">
+        <a href="assets/youth-team.jpg" target="_blank" rel="noopener" aria-label="查看青队志愿者服务队合影原图"><img src="assets/youth-team.jpg" alt="重庆工商大学人工智能学院小红帽学雷锋青年志愿者服务队合影" loading="lazy"></a>
+        <a href="assets/youth-network.jpg" target="_blank" rel="noopener" aria-label="查看青队成员合影原图"><img src="assets/youth-network.jpg" alt="重庆工商大学人工智能学院小红帽学雷锋青年志愿者服务队成员合影" loading="lazy"></a>
+      </div>
+    </section>
+  </template>
+
+  <template id="achievements-panel">
+    <header class="modal-head"><span>03</span><div><p>ACHIEVEMENTS</p><h2 id="modalTitle">个人成就</h2></div></header>
+    <div class="achievement-list">
+      <a class="achievement-card" href="assets/beiyu-certificate.pdf" target="_blank" rel="noopener noreferrer">
+        <span class="certificate-view"><img src="assets/beiyu-preview.jpg" alt="北域护翎挑战杯特等奖证书" loading="lazy"></span>
+        <span class="achievement-copy">
+          <small>2026.09 · 校级选拔赛</small>
+          <strong>北域护翎</strong>
+          <span>第十五届“挑战杯”中国大学生创业计划竞赛东北振兴产业升级专项赛</span>
+          <b>特等奖</b>
+          <em>查看证书原件 ↗</em>
+        </span>
+      </a>
+      <a class="achievement-card" href="assets/songdun-certificate.pdf" target="_blank" rel="noopener noreferrer">
+        <span class="certificate-view"><img src="assets/songdun-preview.jpg" alt="松盾科技挑战杯特等奖证书" loading="lazy"></span>
+        <span class="achievement-copy">
+          <small>2026.09 · 校级选拔赛</small>
+          <strong>松盾科技</strong>
+          <span>第十五届“挑战杯”中国大学生创业计划竞赛东北振兴产业升级专项赛</span>
+          <b>特等奖</b>
+          <em>查看证书原件 ↗</em>
+        </span>
+      </a>
+      <a class="achievement-card" href="assets/youth-innovation-honor.jpg" target="_blank" rel="noopener noreferrer">
+        <span class="certificate-view"><img class="is-rotated" src="assets/youth-innovation-honor.jpg" alt="中国青年科技创新揭榜挂帅擂台赛特等奖证书" loading="lazy"></span>
+        <span class="achievement-copy">
+          <small>2026年度 · 校级选拔赛</small>
+          <strong>中国青年科技创新“揭榜挂帅”擂台赛</strong>
+          <span>证书名单包含蒙璐</span>
+          <b>特等奖</b>
+          <em>查看证书原件 ↗</em>
+        </span>
+      </a>
+      <a class="achievement-card" href="assets/honglu-award-list.jpg" target="_blank" rel="noopener noreferrer">
+        <span class="certificate-view"><img src="assets/honglu-award-list.jpg" alt="红炉有伴乡村振兴创意大赛获奖名单" loading="lazy"></span>
+        <span class="achievement-copy">
+          <small>第六届 · 校级初赛</small>
+          <strong>红炉有伴</strong>
+          <span>萌宠陪伴经济驱动乡村文旅焕新计划</span>
+          <b>一等奖 · 推荐市级复赛</b>
+          <em>查看获奖名单 ↗</em>
+        </span>
+      </a>
+    </div>
+  </template>
+
+  <template id="future-panel">
+    <header class="modal-head"><span>04</span><div><p>FUTURE</p><h2 id="modalTitle">未来规划</h2></div></header>
+    <div class="future-grid">
+      <section><p class="eyebrow">求职目标</p><h3>人工智能 / 前端开发实习生</h3></section>
+      <section><p class="eyebrow">持续探索</p><h3>吉他 · 看书 · 看电影 · 探索新工具</h3></section>
+    </div>
+  </template>
+
+  <script src="app.js?v=7"></script>
+</body>
+</html>
