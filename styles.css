@@ -137,7 +137,7 @@ button, a { font: inherit; }
 .modal-head p { font-size: 13px; letter-spacing: .18em; }
 .modal-head h2 { font-size: clamp(28px, 6vw, 46px); }
 
-.project-list { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.project-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
 .project-card {
   min-height: 180px;
   display: flex;
