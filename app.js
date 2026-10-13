@@ -19,6 +19,41 @@ const panels = {
   future: document.querySelector('#future-panel')
 };
 
+const sceneImages = new Map();
+let requestedScene = cover;
+
+function preloadScene(src) {
+  if (sceneImages.has(src)) return sceneImages.get(src);
+  const image = new Image();
+  image.decoding = 'async';
+  image.src = src;
+  sceneImages.set(src, image);
+  return image;
+}
+
+function displayScene(src) {
+  requestedScene = src;
+  const image = preloadScene(src);
+
+  const apply = () => {
+    if (requestedScene !== src || scene.getAttribute('src') === src) return;
+    scene.classList.add('is-switching');
+    scene.src = src;
+    window.requestAnimationFrame(() => scene.classList.remove('is-switching'));
+  };
+
+  if (image.complete && image.naturalWidth > 0) {
+    apply();
+    return;
+  }
+
+  if (typeof image.decode === 'function') {
+    image.decode().then(apply).catch(() => image.addEventListener('load', apply, { once: true }));
+  } else {
+    image.addEventListener('load', apply, { once: true });
+  }
+}
+
 function hideIntro() {
   intro.classList.add('is-hidden');
   video.pause();
@@ -43,11 +78,17 @@ document.querySelectorAll('[data-panel]').forEach((button) => {
   button.addEventListener('click', () => openPanel(button.dataset.panel));
 });
 
-document.querySelectorAll('[data-scene]').forEach((button) => {
-  const changeScene = () => { scene.src = button.dataset.scene; };
-  const restoreScene = () => { scene.src = cover; };
+const sceneButtons = [...document.querySelectorAll('[data-scene]')];
+sceneButtons.forEach((button) => preloadScene(button.dataset.scene));
+
+sceneButtons.forEach((button) => {
+  const changeScene = () => displayScene(button.dataset.scene);
+  const restoreScene = () => displayScene(cover);
   button.addEventListener('pointerenter', changeScene);
+  button.addEventListener('pointermove', changeScene, { passive: true });
   button.addEventListener('pointerleave', restoreScene);
+  button.addEventListener('mouseenter', changeScene);
+  button.addEventListener('mouseleave', restoreScene);
   button.addEventListener('focus', changeScene);
   button.addEventListener('blur', restoreScene);
 });

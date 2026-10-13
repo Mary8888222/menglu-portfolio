@@ -39,8 +39,11 @@ button, a { font: inherit; }
   object-fit: cover;
   user-select: none;
   -webkit-user-drag: none;
-  transition: opacity 130ms ease;
+  transition: opacity 160ms ease, transform 220ms ease;
+  transform: scale(1);
 }
+
+.scene.is-switching { opacity: .82; transform: scale(1.004); }
 
 .desktop-hotspots { position: absolute; inset: 0; z-index: 3; }
 
