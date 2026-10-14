@@ -180,10 +180,10 @@ button, a { font: inherit; }
   .experience-gallery a:hover img { transform: none; }
 }
 
-.achievement-list { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.achievement-list { display: grid; grid-template-columns: 1fr; gap: 24px; }
 .achievement-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(210px, .72fr) minmax(0, 1.28fr);
   min-width: 0;
   border: 3px solid var(--ink);
   background: rgba(255,255,255,.22);
@@ -194,13 +194,17 @@ button, a { font: inherit; }
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 .achievement-card:hover, .achievement-card:focus-visible { transform: translateY(-5px); box-shadow: 8px 12px 0 rgba(213,0,0,.35); outline: none; }
-.certificate-view { position: relative; display: grid; place-items: center; aspect-ratio: 16 / 10; overflow: hidden; background: #e8e3d7; border-bottom: 3px solid var(--ink); }
-.certificate-view img { width: 100%; height: 100%; object-fit: cover; }
-.certificate-view img.is-rotated { position: absolute; left: 50%; top: 50%; width: auto; height: 145%; max-width: none; transform: translate(-50%, -50%) rotate(-90deg); object-fit: contain; }
+.certificate-view { position: relative; display: grid; place-items: center; min-height: 100%; overflow: hidden; background: #e8e3d7; border-right: 3px solid var(--ink); }
+.certificate-view img { width: 100%; height: 100%; padding: 12px; object-fit: contain; background: #fff; }
+.certificate-view img.is-rotated { position: absolute; left: 50%; top: 50%; width: auto; height: 145%; max-width: none; padding: 0; transform: translate(-50%, -50%) rotate(-90deg); object-fit: contain; }
 .achievement-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; flex: 1; padding: 20px; }
 .achievement-copy small { color: #6c675f; letter-spacing: .08em; }
 .achievement-copy strong { font-size: clamp(22px, 3.3vw, 30px); line-height: 1.25; }
 .achievement-copy > span { line-height: 1.65; }
+.star-list { display: grid; gap: 9px; margin: 4px 0 2px; }
+.star-list > div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 10px; align-items: start; }
+.star-list dt { color: var(--red); font-weight: 900; line-height: 1.65; }
+.star-list dd { margin: 0; color: #302e2a; line-height: 1.72; }
 .achievement-copy b { display: inline-block; margin-top: auto; padding: 5px 9px; background: var(--red); color: #fff; font-size: 15px; }
 .achievement-copy em { align-self: flex-end; font-style: normal; font-size: 13px; border-bottom: 1px solid currentColor; }
 .future-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
@@ -259,6 +263,9 @@ button, a { font: inherit; }
   .site-actions button { flex: 1; min-height: 45px; border: 2px solid var(--ink); }
   .share-status { left: 0; right: 0; text-align: center; }
   .project-list, .future-grid, .achievement-list { grid-template-columns: 1fr; }
+  .achievement-card { grid-template-columns: 1fr; }
+  .certificate-view { min-height: 0; aspect-ratio: 16 / 10; border-right: 0; border-bottom: 3px solid var(--ink); }
+  .star-list > div { grid-template-columns: 1fr; gap: 2px; }
   .photo-grid-three { grid-template-columns: 1fr 1fr; }
   .modal { width: calc(100vw - 16px); max-height: calc(100svh - 16px); }
   .modal-shell { max-height: calc(100svh - 16px); padding: 54px 18px 26px; border-width: 3px; box-shadow: 6px 7px 0 rgba(213,0,0,.82); }
